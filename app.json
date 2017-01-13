@@ -1,0 +1,29 @@
+{
+  "pages":[
+    "pages/search/index",
+    "pages/play/index"
+  ],
+  "window":{
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "音乐播放器",
+    "backgroundColor": "#fbfcfd",
+    "navigationBarBackgroundColor":"#BB2C08"
+  },
+  "tabBar": {
+    "color": "#aaa",
+    "selectedColor": "#fff",
+    "borderStyle": "black",
+    "backgroundColor": "#212121",
+    "list": [{
+      "pagePath": "pages/search/index",
+      "iconPath": "img/cm2_btm_icn_discovery.png",
+      "selectedIconPath": "img/cm2_btm_icn_discovery_prs.png",
+      "text":"搜索"
+    },{
+      "pagePath": "pages/play/index",
+      "iconPath": "img/cm2_btm_icn_music.png",
+      "selectedIconPath": "img/cm2_btm_icn_music_prs.png",
+      "text":"播放"
+    }]
+  }
+}

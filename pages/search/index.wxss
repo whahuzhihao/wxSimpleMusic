@@ -1,0 +1,37 @@
+/* pages/search/index.wxss */
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+.weui-cell{
+    padding: 12px 15px 12px 35px;
+}
+.song-item-block{
+    padding: 5px 15px;
+}
+.song-name-row{
+    font-size: 15px;
+    margin-bottom: 2px;
+}
+.song-tran-name{
+    color:#999999;
+    margin-left: 10rpx;
+}
+.song-name {
+    color:#2d77cb;
+}
+.song-desc-row{
+    font-size: 12px;
+}
+.search-head{
+    position:fixed;
+    top:0px;
+    z-index:99999;
+    width: 100%;
+}
+.search-body{
+    margin-top: 49px;
+}
