@@ -1,6 +1,7 @@
  /**
   * 这里不记录页面状态了，重新启动程序以后只记得当前在播的歌曲，不记录播放进度
   * 本来打算把所有状态都放到一个对象里，但是很难维护，还是做简单的业务逻辑流转吧
+  * 小程序对于CSS3动画支持非常差，这里只能用微信自带的动画api曲线救国了
   */
 let app = getApp();
 let util = require("../../utils/util.js");
@@ -13,22 +14,37 @@ Page({
       currentSeconds: 0,
       option:'播放',
       intervalId: null,
-      animationState:'paused',
+      animationState:'paused !important;',
       playingNeedle:'',
       playing:false,
+      animationIntervalId: null,
+      rotateCount: 0,
   },
   onLoad:function(){
       console.log('load');
       let that = this;
       wx.onBackgroundAudioPlay(function(){
+          console.log('play');
           that.setData({
-            animationState: 'running',
+            animationState: 'running !important;',
             playingNeedle: 'playing_needle',
             playing: true,
             option: '暂停',
             totalTime: util.formatMinute(that.data.music.duration/1000),
             totalSeconds: that.data.music.duration/1000
           });
+          let animation = wx.createAnimation({
+              duration:1000,
+          });
+          //表示新进来的音乐 这里不复原角度了，会很麻烦
+          if(that.data.animationIntervalId != null){
+              clearInterval(that.data.animationIntervalId);
+          }                    
+          that.data.animationIntervalId = setInterval(function(){
+              that.setData({
+                animation:animation.rotate((++that.data.rotateCount)*6).step().export()
+              });
+          },100);
           that.data.intervalId = setInterval(function(){
               wx.getBackgroundAudioPlayerState({
                 success: function(res) {
@@ -58,26 +74,38 @@ Page({
           }, 1000);
       });
       wx.onBackgroundAudioPause(function(){
+        console.log('pause');
         if(that.data.intervalId != null){
           clearInterval(that.data.intervalId);
         }
+        if(that.data.animationIntervalId != null){
+          clearInterval(that.data.animationIntervalId);
+        }
         that.setData({
-          animationState: 'paused',
+          animation:"",
+          animationState: 'paused !important;',
           playingNeedle: '',
           playing: false,
           intervalId: null,
+          animationIntervalId: null,
           option: '播放'
         });
       });
       wx.onBackgroundAudioStop(function(){
+        console.log('stop');
         if(that.data.intervalId != null){
           clearInterval(that.data.intervalId);
         }
+        if(that.data.animationIntervalId != null){
+          clearInterval(that.data.animationIntervalId);
+        }
         that.setData({
-          animationState: 'paused',
+          animationState: 'paused !important;',
+          animation:"",
           playingNeedle: '',
           playing: false,
           intervalId: null,
+          animationIntervalId: null,
           option: '播放'
         });
       });
@@ -86,7 +114,7 @@ Page({
       console.log('ready');
   },
   onShow:function(){
-    console.log('show');
+      console.log('show');
       let appMusic = app.getMusic();
       let selfMusic = this.data.music;
       if(appMusic == null){
@@ -137,9 +165,10 @@ Page({
       }
     });
   },
-  audioPlay: function (ifRestart= true) {
+  audioPlay: function () {
     let that = this;
     let music = this.data.music;
+
     wx.playBackgroundAudio({
         dataUrl: music.url,
         title: music.name,

@@ -34,7 +34,13 @@ page{background-color: #fff}
     height:450rpx;
     margin:160rpx auto 0 auto;
     position:relative;
+
+    /*animation: circle 20s linear infinite;
+    animation-play-state: pasued;
+    -webkit-animation: circle 20s linear infinite;
+    animation-play-state: paused;*/
 }
+
 #cd{
    width:100%;
    height:100%; 
@@ -48,11 +54,6 @@ page{background-color: #fff}
     position: absolute;
     left:75rpx;
     top:75rpx;
-}
-.animation-circle{
-    animation: circle 20s linear;
-    animation-play-state: running;
-    animation-iteration-count: infinite;
 }
 
 #progress_row{

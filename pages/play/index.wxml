@@ -1,11 +1,9 @@
+<image mode="aspectFit" src="../../img/play_bg.jpg" id="play_bg"/>
 <view>
-  <!--<image src="../../img/cm2_default_play_bg-ip6@2x.jpg" id="coverbg"/>-->
-  <image src="../../img/play_bg.jpg" id="play_bg"/>
-  <!--<image id="playing-bg" class="blurbg" src="{{music.pic}}" />-->
   <view id="play_needle">
     <image src="../../img/needle.png" class="{{playingNeedle}}"/>
   </view>
-  <view id="music_covert" class="animation-circle" style="animation-play-state:{{animationState}}">
+  <view id="music_covert" animation="{{animation}}">
     <image id="cd" src="../../img/play.png" />
     <image id="covert" src="{{music.pic}}" />
   </view>
