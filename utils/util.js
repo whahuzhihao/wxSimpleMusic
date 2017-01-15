@@ -16,6 +16,19 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+function formatMinute(s){
+  let m = parseInt(s/60);
+  s = parseInt(s%60);
+  if(m.toString().length == 1){
+    m = "0"+m;
+  }
+  if(s.toString().length == 1){
+    s = "0"+s;
+  }
+  return m+":"+s;
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  formatMinute: formatMinute
 }

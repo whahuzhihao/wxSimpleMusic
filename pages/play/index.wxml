@@ -1,7 +1,21 @@
-<!-- audio.wxml -->
-<audio controls="{{false}}" src="{{src}}" id="myAudio"></audio>
+<view>
+  <!--<image src="../../img/cm2_default_play_bg-ip6@2x.jpg" id="coverbg"/>-->
+  <image src="../../img/play_bg.jpg" id="play_bg"/>
+  <!--<image id="playing-bg" class="blurbg" src="{{music.pic}}" />-->
+  <view id="play_needle">
+    <image src="../../img/needle.png" />
+  </view>
+  <view id="music_covert">
+    <image id="cd" src="../../img/play.png" />
+    <image id="covert" src="{{music.pic}}" />
+  </view>
+  <view class="weui-flex" id="progress_row">
+        <view><text class="slide-text slide-text-current">{{currentTime}}</text></view>
+        <view class="weui-flex__item"><slider id="music_progress" min="0" max="{{totalSeconds}}" bindchange="seekMusic" value="{{currentSeconds}}"/></view>
+        <view><text class="slide-text">{{totalTime}}</text></view>
+    </view>
+</view>
 
-<button type="primary" bindtap="audioPlay">播放</button>
-<button type="primary" bindtap="audioPause">暂停</button>
-<button type="primary" bindtap="audio14">设置当前播放时间为14秒</button>
-<button type="primary" bindtap="audioStart">回到开头</button>
+<view style="position:absolute;top:700rpx;width:100%">
+<button type="primary" bindtap="audioOption">{{option}}</button>
+</view>

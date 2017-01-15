@@ -25,5 +25,11 @@
       "selectedIconPath": "img/cm2_btm_icn_music_prs.png",
       "text":"播放"
     }]
+  },
+  "networkTimeout": {
+    "request": 5000,
+    "connectSocket": 10000,
+    "uploadFile": 10000,
+    "downloadFile": 10000
   }
 }

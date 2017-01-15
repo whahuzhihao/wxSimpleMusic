@@ -4,14 +4,14 @@
             <view class="weui-search-bar__form">
                 <view class="weui-search-bar__box">
                     <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                    <input type="text" class="weui-search-bar__input" placeholder="搜索歌曲名" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="inputConfirm"/>
+                    <input type="text" class="weui-search-bar__input" placeholder="点击搜索" value="{{keyword}}" focus="{{inputShowed}}" bindinput="inputTyping" bindconfirm="inputConfirm"/>
                     <view class="weui-icon-clear" wx:if="{{haveInput}}" bindtap="clearInput">
                         <icon type="clear" size="14"></icon>
                     </view>
                 </view>
                 <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
                     <icon class="weui-icon-search" type="search" size="14"></icon>
-                    <view class="weui-search-bar__text">搜索歌曲名</view>
+                    <view class="weui-search-bar__text">点击搜索</view>
                 </label>
             </view>
             <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
@@ -19,19 +19,19 @@
     </view>
     <view class="page__bd search-body">
         <view class="weui-cells searchbar-result" wx:if="{{searchResult.length > 0}}">
-            <view id="{{index}}" class="weui-media-box weui-media-box_text song-item-block" wx:for="{{searchResult}}" bindtap="playMusic">
+            <view id="{{index}}" bindscrolltolower="{{refresh}}" class="weui-media-box weui-media-box_text song-item-block" wx:for="{{searchResult}}" bindtap="playMusic">
                 <view class="weui-media-box__title weui-media-box__title_in-text song-name-row"><text class="song-name">{{item.name}}</text><text class="song-tran-name" wx:if="{{item.transNames}}">({{item.transNames}})</text></view>
                 <view class="weui-media-box__desc song-desc-row">{{item.artists}}<text class="album" wx:if="{{item.album}}"> - {{item.album}}</text></view>
                 <view class="weui-media-box__desc song-desc-row" wx:if="{{item.alias}}">{{item.alias}}</view>
             </view>
         </view>
-        <!--<view class="weui-loadmore">
+        <view class="weui-loadmore" wx:if="{{isLoading}}">
             <view class="weui-loading"></view>
             <view class="weui-loadmore__tips">正在加载</view>
         </view>
-        <view class="weui-loadmore weui-loadmore_line">
+        <view class="weui-loadmore weui-loadmore_line" wx:if="{{noExtra}}">
             <view class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</view>
-        </view>-->
+        </view>
     </view>
 </view>
 

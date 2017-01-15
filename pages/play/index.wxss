@@ -1,1 +1,85 @@
-/* pages/play/index.wxss */
+page{background-color: #fff}
+#play_bg{
+    width: 640px; 
+    height: 1136px;
+    position: absolute;
+    left: 0;
+    bottom:0;
+    z-index:-999;
+}
+#play_needle{
+    /*text-align: center;*/
+    /*position: absolute;*/
+    z-index:20;
+    width: 100%;
+    /*top:0;*/
+}
+#play_needle image{
+    width: 187rpx;
+    height: 314rpx;
+    position:absolute;
+    top: 0rpx;
+    left:375rpx;
+    margin-left:-25rpx;
+    margin-top:-30rpx;
+    transform-origin:25rpx 30rpx; 
+    transform: rotate(-20deg);
+    /*transition: all linear .5s */
+}
+#music_covert{
+    text-align: center;
+    width:450rpx;
+    height:450rpx;
+    margin:160rpx auto 0 auto;
+    position:relative;
+}
+#cd{
+   width:100%;
+   height:100%; 
+   z-index: 9990;
+}
+#covert{
+    width:300rpx;
+    height:300rpx;
+    border-radius:200rpx;
+    z-index:9999;
+    position: absolute;
+    left:75rpx;
+    top:75rpx;
+}
+
+#progress_row{
+    padding: 0 15px;
+}
+.slide-text{
+    font-size:12px;
+}
+.slide-text-current{
+    color:#999;
+}
+
+/*#playing-main{margin: 160rpx auto 0;position: relative;z-index:10;width: 596rpx;
+ height:596rpx; animation-delay: .5s;animation: circle 15s linear infinite; animation-play-state: paused;}
+#playingmainbg{width:596rpx;height: 596rpx;position: relative;z-index: 1}
+#pmaincover{position: absolute;width: 388rpx;height: 388rpx;left:104rpx ;top:104rpx;z-index: 3;
+border-radius: 50%;overflow: hidden;}
+
+#playing-actwrap{position: absolute;left: 0;bottom:0;width: 100%;box-sizing:border-box;overflow: hidden;z-index: 10}
+#playing-info{display: flex;margin:0 80rpx}
+.pi-act{flex: 1;text-align: center;width: 100%;position: relative}
+.pi-act image{width:120rpx;height: 120rpx;}
+
+
+#playingaction{margin: 10rpx 10rpx 30rpx;display: flex}
+.pa-baction,.pa-maction,.pa-saction{flex: 1;text-align: center;width: 100%}
+.pa-baction image{width:110rpx;height:110rpx; vertical-align: middle }
+.pa-maction image{width:80rpx;height:80rpx;vertical-align: middle;margin-top: 15rpx}
+.pa-saction image{width:120rpx;height:120rpx; vertical-align: middle;}
+
+
+.playing #playing-main{animation-play-state: running !important;}
+.playing #playing-zz image{transform: rotate(-0deg) }*/
+
+
+
+
