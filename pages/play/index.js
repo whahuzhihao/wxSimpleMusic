@@ -97,7 +97,6 @@ Page({
       });
       //需要新播放
       if(selfMusic == null || selfMusic.id != appMusic.id){
-          // this.data.music = appMusic;
           this.setData({
             music: appMusic,
             totalTime: util.formatMinute(appMusic.duration/1000),
