@@ -3,19 +3,22 @@
   <image src="../../img/play_bg.jpg" id="play_bg"/>
   <!--<image id="playing-bg" class="blurbg" src="{{music.pic}}" />-->
   <view id="play_needle">
-    <image src="../../img/needle.png" />
+    <image src="../../img/needle.png" class="{{playingNeedle}}"/>
   </view>
-  <view id="music_covert">
+  <view id="music_covert" class="animation-circle" style="animation-play-state:{{animationState}}">
     <image id="cd" src="../../img/play.png" />
     <image id="covert" src="{{music.pic}}" />
   </view>
-  <view class="weui-flex" id="progress_row">
-        <view><text class="slide-text slide-text-current">{{currentTime}}</text></view>
-        <view class="weui-flex__item"><slider id="music_progress" min="0" max="{{totalSeconds}}" bindchange="seekMusic" value="{{currentSeconds}}"/></view>
-        <view><text class="slide-text">{{totalTime}}</text></view>
-    </view>
 </view>
 
-<view style="position:absolute;top:700rpx;width:100%">
-<button type="primary" bindtap="audioOption">{{option}}</button>
+<view id="playAction">
+<view class="weui-flex" id="progress_row">
+      <view><text class="slide-text slide-text-current">{{currentTime}}</text></view>
+      <view class="weui-flex__item"><slider id="music_progress" min="0" max="{{totalSeconds}}" bindchange="seekMusic" value="{{currentSeconds}}"/></view>
+      <view><text class="slide-text slide-text-total">{{totalTime}}</text></view>
+</view>
+<view>
+  <image bindtap="audioOption" src="../../img/ajf.png" wx:if="{{!playing}}"/>
+  <image bindtap="audioOption" src="../../img/ajd.png" wx:else/>
+</view>
 </view>

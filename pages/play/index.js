@@ -13,12 +13,18 @@ Page({
       currentSeconds: 0,
       option:'播放',
       intervalId: null,
+      animationState:'paused',
+      playingNeedle:'',
+      playing:false,
   },
   onLoad:function(){
       console.log('load');
       let that = this;
       wx.onBackgroundAudioPlay(function(){
           that.setData({
+            animationState: 'running',
+            playingNeedle: 'playing_needle',
+            playing: true,
             option: '暂停',
             totalTime: util.formatMinute(that.data.music.duration/1000),
             totalSeconds: that.data.music.duration/1000
@@ -56,6 +62,21 @@ Page({
           clearInterval(that.data.intervalId);
         }
         that.setData({
+          animationState: 'paused',
+          playingNeedle: '',
+          playing: false,
+          intervalId: null,
+          option: '播放'
+        });
+      });
+      wx.onBackgroundAudioStop(function(){
+        if(that.data.intervalId != null){
+          clearInterval(that.data.intervalId);
+        }
+        that.setData({
+          animationState: 'paused',
+          playingNeedle: '',
+          playing: false,
           intervalId: null,
           option: '播放'
         });
