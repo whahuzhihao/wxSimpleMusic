@@ -34,7 +34,7 @@ Page({
             totalSeconds: that.data.music.duration/1000
           });
           let animation = wx.createAnimation({
-              duration:1000,
+              duration:100,
           });
           //表示新进来的音乐 这里不复原角度了，会很麻烦
           if(that.data.animationIntervalId != null){
@@ -42,7 +42,7 @@ Page({
           }                    
           that.data.animationIntervalId = setInterval(function(){
               that.setData({
-                animation:animation.rotate((++that.data.rotateCount)*6).step().export()
+                animation:animation.rotate((++that.data.rotateCount)*2).step().export()
               });
           },100);
           that.data.intervalId = setInterval(function(){
